@@ -3,16 +3,19 @@ import session from "express-session";
 import express from "express";
 
 const app = express();
+app.use(express.json());
 
-app.use = session({
-  secret: "!@#$%&^*)(",
-  resave: false,
-  saveUninitialized: false,
-  secret: { secure: false },
-});
+app.use(
+  session({
+    secret: "!@#$%&^*)(",
+    resave: false,
+    saveUninitialized: false,
+    secret: { secret: false },
+  })
+);
 
 export async function signup(req, res, next) {
-  const { userid, password, name, email } = req.params.body;
+  const { userid, password, name, email } = req.body;
   const users = await authRepository.createUser(userid, password, name, email);
   if (users) {
     res.status(201).json(users);
@@ -20,7 +23,7 @@ export async function signup(req, res, next) {
 }
 
 export async function login(req, res, next) {
-  const { userid, password } = req.param.body;
+  const { userid, password } = req.body;
   const users = await authRepository.login(userid, password);
   if (users) {
     res.status(200).json(`${userid}님 로그인 완료`);
@@ -31,7 +34,7 @@ export async function login(req, res, next) {
 }
 
 export async function check(req, res, next) {
-  if (req.session.user) {
+  if (req.session.user && req.session) {
     res.json(req.session.user);
   } else {
     res.status(401).send("로그인이 필요합니다.");
