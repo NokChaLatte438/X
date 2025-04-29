@@ -33,7 +33,7 @@ export async function login(req, res, next) {
   const { userid, password } = req.body;
   const user = await authRepository.findByUserId(userid);
   if (!user) {
-    res.status(401).json(`${userid} 아이디를 찾을 수 없음`);
+    return res.status(401).json(`${userid} 아이디를 찾을 수 없음`);
   }
   const isValidPassword = await bcrypt.compare(password, user.password);
   if (!isValidPassword) {
@@ -42,6 +42,7 @@ export async function login(req, res, next) {
 
   const token = await createJwtToken(user.id);
   res.status(200).json({ token, userid });
+  alert(token);
 }
 
 export async function verify(req, res, next) {
