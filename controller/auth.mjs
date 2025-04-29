@@ -27,10 +27,6 @@ export async function signup(req, res, next) {
   if (users) {
     res.status(201).json({ token, userid });
   }
-
-  if (users) {
-    res.status(201).json(users);
-  }
 }
 
 export async function login(req, res, next) {
