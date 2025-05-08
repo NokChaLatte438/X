@@ -3,23 +3,43 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Sign Up</title>
+    <title>회원가입</title>
+    <script src="./signup.js"></script>
   </head>
   <body>
-    <section>
-      <h2>회원가입</h2>
+    <h2>회원가입</h2>
+    <form
+      action="/auth/signup"
+      name="regform"
+      id="regform"
+      method="post"
+      onsubmit="return sendit()"
+    >
       <p>아이디</p>
-      <input type="text" placeholder="ID" />
+      <input type="text" name="userid" id="userid" maxlength="20" />
+
       <p>비밀번호</p>
-      <input type="password" placeholder="PW" />
+      <input type="password" name="userpw" id="userpw" maxlength="20" />
+
       <p>비밀번호 확인</p>
-      <input type="password" placeholder="PW 확인" />
+      <input type="password" name="userpw_re" id="userpw_re" maxlength="20" />
+
       <p>이름</p>
-      <input type="text" placeholder="이름" />
+      <input type="text" name="name" id="name" maxlength="10" />
+      <!-- <p>휴대폰번호</p>
+      <input type="text" name="hp" id="hp" maxlength="20" /> -->
       <p>이메일</p>
-      <input type="email" placeholder="이메일" /><br /><br />
-      <button id="signup__btn" type="button">회원가입</button>
-    </section>
-    <script src="./app.mjs" defer></script>
+      <input type="text" name="email" id="email" maxlength="50" /> <br /><br />
+      <!-- <fieldset>
+        <legend>성별</legend>
+        <label for="male">남자</label
+        ><input type="radio" name="gender" value="남자" id="male" checked />
+        <label for="female">여자</label
+        ><input type="radio" name="gender" value="여자" id="female" />
+      </fieldset> -->
+
+      <!-- button type: submit, reset, button -->
+      <p><button>가입완료</button></p>
+    </form>
   </body>
 </html>
