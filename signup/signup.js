@@ -47,13 +47,13 @@ function sendit() {
   const expPwText =
     /^(?=.*[A_Za-z])(?=.*\d)(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{8,20}/;
   const expNameText = /^[가-힣]+$/;
-  const expHpText = /^\d{3}-\d{3,4}-\d{4}$/;
-  const expSsn1Txt = /^\d{6}/;
-  const expSsn2Txt = /^\d{7}/;
+  // const expHpText = /^\d{3}-\d{3,4}-\d{4}$/;
+  // const expSsn1Txt = /^\d{6}/;
+  // const expSsn2Txt = /^\d{7}/;
   const expEmailTxt = /^[A-Za-z0-9\-\.]+@[A-Za-z0-9\-]+\./;
 
-  const arr1 = expSsn1Txt.toString().split("").map(Number);
-  const arr2 = expSsn2Txt.toString().split("").map(Number);
+  // const arr1 = expSsn1Txt.toString().split("").map(Number);
+  // const arr2 = expSsn2Txt.toString().split("").map(Number);
 
   if (userid.value === "") {
     alert("아이디를 입력해주세요.");
